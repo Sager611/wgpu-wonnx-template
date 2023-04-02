@@ -1,0 +1,19 @@
+# general rust-related files
+/target
+**/*.rs.bk
+Cargo.lock
+bin/
+pkg/
+wasm-pack.log
+
+# website
+#www/
+#www/*
+#www/**/*
+
+# hidden files
+.*
+!.vim/
+!.appveyor.yml
+!.gitignore
+!.travis.yml

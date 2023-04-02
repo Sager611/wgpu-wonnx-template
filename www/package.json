@@ -1,0 +1,35 @@
+{
+  "name": "wgpu-wonnx-template",
+  "version": "0.1.0",
+  "description": "visualization tool for deep neural criticality",
+  "main": "index.js",
+  "bin": {
+    "create-wasm-app": ".bin/create-wasm-app.js"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sager611/wgpu-wonnx-template.git"
+  },
+  "keywords": [
+    "webassembly",
+    "wasm",
+    "rust",
+    "webpack"
+  ],
+  "author": "Author <author@email.com>",
+  "license": "(MIT OR Apache-2.0)",
+  "dependencies": {
+    "wgpu-wonnx-template": "file:../pkg"
+  },
+  "devDependencies": {
+    "wgpu-wonnx-template": "file:../pkg",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "copy-webpack-plugin": "^5.0.0"
+  }
+}

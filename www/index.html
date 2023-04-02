@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wgpu and wonnx example project</title>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        canvas {
+            background-color: black;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* you can resize the container as you wish and
+        * the canvas will resize by calling the corresponding
+        * event callback in the WASM code thanks to `ResizeObserver`.
+        * For more info on `ResizeObserver`:
+        * https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
+        */
+        .wasm_container {
+            height: 100%;
+            width: 100%;
+        }
+
+        #no-webgpu {
+            visibility: hidden;
+        }
+    </style>
+  </head>
+  <body>
+    <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+
+    <!--In case WebGPU is not available, show this message-->
+    <div id="no-webgpu">
+        WebGPU is not available in this browser. <br/>
+        For information on browsers with WebGPU compatibility check the <a href="https://github.com/gpuweb/gpuweb/wiki/Implementation-Status" target="_blank">following link</a>.
+    </div>
+
+    <!--Canvas will be created inside the div by the Rust WASM code-->
+    <div class="wasm_container" id="wasm-container"></div>
+
+    <!--Bootstrap script to launch WASM code-->
+    <script src="./bootstrap.js"></script>
+
+  </body>
+</html>
