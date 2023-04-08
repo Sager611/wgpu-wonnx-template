@@ -2,13 +2,16 @@ use std::sync::Arc;
 
 use wonnx::{Session, WonnxError};
 
+#[cfg(target_arch = "wasm32")]
+use wasm_bindgen::prelude::*;
+
 use crate::resources::load_binary;
 
 #[inline]
 pub async fn load_wonnx_session() -> Result<Arc<Session>, WonnxError> {
   let model_path = "models/opt-squeeze.onnx";
   let model_bytes = load_binary(model_path).await.unwrap();
-  let session = Arc::new(wonnx::Session::from_bytes(model_bytes.as_slice()).await?);
+  let session = Arc::new(Session::from_bytes(model_bytes.as_slice()).await?);
 
   Ok(session)
 }

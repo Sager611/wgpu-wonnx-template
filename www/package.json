@@ -1,7 +1,7 @@
 {
   "name": "wgpu-wonnx-template",
   "version": "0.1.0",
-  "description": "visualization tool for deep neural criticality",
+  "description": "Template Webpack project to use `wgpu` and `wonnx` through WASM",
   "main": "index.js",
   "bin": {
     "create-wasm-app": ".bin/create-wasm-app.js"

@@ -24,17 +24,18 @@ cgmath = "0.18"
 # egui_winit_platform = "0.18.0"
 
 env_logger = "0.10.0"
-getrandom = { version = "0.2", features = ["js"] }
+getrandom = { version = "0.2.6", features = ["js"] }
 instant = "0.1.12"
 log = "0.4.17"
 # async library
 pollster = "0.3.0"
 tobj = { version = "3.2", features = ["async"] }
 winit = "0.28.2"
-wgpu = "0.15"
-wonnx = "^0.4.0"
-# support for wgpu 0.15 in wonnx is not merged at the moment
-#wonnx = { git = "https://github.com/webonnx/wonnx.git", branch = "chore/wgpu-0.15" }
+wgpu = "0.15.0"
+#wonnx = "^0.4.0"
+# support for wgpu 0.15 in `wonnx` is not merged at the moment. We need our `wgpu`
+# version to match that of `wonnx`
+wonnx = { git = "https://github.com/webonnx/wonnx.git", branch = "chore/wgpu-0.15" }
 
 [dependencies.image]
 version = "0.24"
@@ -52,6 +53,7 @@ console_log = { version = "0.2", features = ["color"], optional = true }
 js-sys = "0.3.57"
 reqwest = { version = "0.11" }
 wasm-bindgen = { version = "0.2.80", features = ["serde-serialize"] }
+wasm-bindgen-console-logger = "0.1.1"
 wasm-bindgen-futures = "0.4.30"
 wasm-bindgen-test = "0.3.30"
 serde-wasm-bindgen = "0.4"

@@ -1,6 +1,9 @@
 use std::iter;
 use std::sync::Arc;
 
+#[cfg(target_arch = "wasm32")]
+use wasm_bindgen::prelude::*;
+
 use cgmath::prelude::*;
 use wgpu::util::DeviceExt;
 use winit::{event::*, window::Window};
@@ -196,9 +199,6 @@ impl State {
   pub async fn new(window: Arc<Window>) -> Self {
     let window_size = window.inner_size();
 
-    // neural network session
-    let nn_session = load_wonnx_session().await.expect("Couldn't load wonnx session");
-
     // The instance is a handle to our GPU
     // BackendBit::PRIMARY => Vulkan + Metal + DX12 + Browser WebGPU
     //
@@ -261,10 +261,13 @@ impl State {
 
     // TODO: some wasm-bindgen/wgpu shenanigans prevent this from working, in js `surface` becomes
     // a GPUDevice in this line.
-    //surface.configure(&device, &surface_config);
+    surface.configure(&device, &surface_config);
 
     log::info!("EEEEEEEEEEEEEEEEEEEE");
     log::info!("Surface Capabilities: {:?}", surface.get_capabilities(&adapter));
+
+    // neural network session
+    let nn_session = load_wonnx_session().await.expect("Couldn't load wonnx session");
 
     // Texture
     let texture_bind_group_layout = device.create_bind_group_layout(&wgpu::BindGroupLayoutDescriptor {
