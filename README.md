@@ -11,7 +11,7 @@
 ## :memo: About
 
 <div align="center" style="background: #9d0006; border-left: 10px solid red; padding: 10px;">
-<b>ATTENTION</b>: You need a <a href="#enabling-webgpu-on-your-browser">WebGPU compatible browser</a> to run your project on web.
+<b>ATTENTION</b>: You need a <a href="#computer-enabling-webgpu-on-your-browser">WebGPU compatible browser</a> to run your project on web.
 </div>
 <br/>
 
