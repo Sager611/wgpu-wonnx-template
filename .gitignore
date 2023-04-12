@@ -15,5 +15,6 @@ wasm-pack.log
 .*
 !.vim/
 !.appveyor.yml
+!.env
 !.gitignore
 !.travis.yml

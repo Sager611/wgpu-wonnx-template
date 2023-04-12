@@ -1,4 +1,4 @@
-use wgpu_wonnx_template::run;
+use {{crate_name}}::run;
 
 fn main() {
   // run is async to work for web,
