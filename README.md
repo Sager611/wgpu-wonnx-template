@@ -6,7 +6,7 @@
 
 </div>
 
-# :warning: WIP PROJECT :warning:
+# :warning: WIP PROJECT - web is not implemented and has [issues](https://github.com/Sager611/wgpu-wonnx-template/issues) :warning:
 
 ## :memo: About
 

@@ -6,3 +6,7 @@ res/*
 res/**/*
 
 dist
+
+.bin/
+.bin/*
+.bin/**/*

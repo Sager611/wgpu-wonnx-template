@@ -1,10 +1,10 @@
 {
-  "name": "wgpu-wonnx-template",
+  "name": "{{project-name}}",
   "version": "0.1.0",
   "description": "Template Webpack project to use `wgpu` and `wonnx` through WASM",
   "main": "index.js",
   "bin": {
-    "create-wasm-app": ".bin/create-wasm-app.js"
+    "{{crate_name}}": ".bin/{{crate_name}}.js"
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",
@@ -20,7 +20,7 @@
     "rust",
     "webpack"
   ],
-  "author": "Author <author@email.com>",
+  "author": "{{authors}}",
   "license": "(MIT OR Apache-2.0)",
   "dependencies": {
     "wgpu-wonnx-template": "file:../pkg"

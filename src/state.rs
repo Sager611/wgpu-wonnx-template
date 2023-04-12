@@ -203,7 +203,6 @@ impl State {
     // BackendBit::PRIMARY => Vulkan + Metal + DX12 + Browser WebGPU
     //
     // Honoring WGPU_BACKEND environment variable on native
-    log::info!("AAAAAAAAAAAAAAAAAAA");
     let backends = wgpu::util::backend_bits_from_env().unwrap_or(wgpu::Backends::all());
     let dx12_shader_compiler = wgpu::util::dx12_shader_compiler_from_env().unwrap_or_default();
     let wgpu_instance = wgpu::Instance::new(wgpu::InstanceDescriptor {
@@ -211,7 +210,6 @@ impl State {
       dx12_shader_compiler,
     });
 
-    log::info!("BBBBBBBBBBBBBBBBBB");
     let backends = wgpu::util::backend_bits_from_env().unwrap_or(wgpu::Backends::all());
     // Surface
     //
@@ -222,7 +220,6 @@ impl State {
       .await
       .expect("No suitable GPU adapters found on the system!");
 
-    log::info!("CCCCCCCCCCCCCCCCCC");
     let device_descriptor = wgpu::DeviceDescriptor {
           label: None,
           //features: wgpu::Features::all_webgpu_mask(),
@@ -239,9 +236,8 @@ impl State {
             wgpu::Limits::default()
           },
         };
-    log::info!("CACACACACACACACACA");
     //let adapter_features = adapter.features();
-    //log::info!("CBCBCBCBC: {:?}", adapter_features);
+    //log::info!("Adapter features: {:?}", adapter_features);
     let (device, queue) = adapter
       .request_device(
         &device_descriptor,
@@ -250,20 +246,16 @@ impl State {
       .await
       .expect("Unable to request GPU device");
 
-    log::info!("DDDDDDDDDDDDDDDDDDDD");
     //log::info!("Adapter limits: {:?}", adapter.limits());
 
     let surface_config = surface
       .get_default_config(&adapter, window_size.width, window_size.height)
       .expect("Surface isn't supported by the adapter.");
 
-    log::info!("DADADDA: {:?}", surface_config);
-
     // TODO: some wasm-bindgen/wgpu shenanigans prevent this from working, in js `surface` becomes
     // a GPUDevice in this line.
     surface.configure(&device, &surface_config);
 
-    log::info!("EEEEEEEEEEEEEEEEEEEE");
     log::info!("Surface Capabilities: {:?}", surface.get_capabilities(&adapter));
 
     // neural network session

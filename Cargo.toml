@@ -1,7 +1,7 @@
 [package]
-name = "wgpu-wonnx-template"
+name = "{{project-name}}"
 version = "0.1.0"
-authors = ["Adrian Sager <adriansagerlaganga@gmail.com>"]
+authors = ["{{authors}}"]
 edition = "2021"
 
 [lib]
@@ -32,6 +32,7 @@ pollster = "0.3.0"
 tobj = { version = "3.2", features = ["async"] }
 winit = "0.28.2"
 wgpu = "0.15.0"
+
 #wonnx = "^0.4.0"
 # support for wgpu 0.15 in `wonnx` is not merged at the moment. We need our `wgpu`
 # version to match that of `wonnx`
