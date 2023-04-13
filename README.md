@@ -46,7 +46,7 @@ Additional dependencies are needed to build the web application:
 * [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/): to compile to WebAssembly.
 * [npm](https://www.npmjs.com/get-npm): to install and run the web application under `www/`.
 
-Finally, [`wonnx`](https://github.com/webonnx/wonnx) uses compute shaders, which on web are only available by [enabling WebGPU on your browser](#enabling-webgpu-on-your-browser).
+Finally, [`wonnx`](https://github.com/webonnx/wonnx) uses compute shaders, which on web are only available by [enabling WebGPU on your browser](#computer-enabling-webgpu-on-your-browser).
 
 ### :hammer_and_pick: Build for desktop
 
