@@ -512,8 +512,6 @@ impl State {
         ..
       } => match key {
         VirtualKeyCode::Return => {
-          log::warn!("Return key event");
-
           match state {
             ElementState::Released => self.classify_screenshot(),
             _ => true
@@ -632,7 +630,7 @@ impl State {
       let image = self.screenshot();
       let _future = classify_image(&self.nn_session, image.as_slice().unwrap().into());
 
-      log::info!("Classified image");
+      let _res = pollster::block_on(future);
 
       true
   }

@@ -18,19 +18,38 @@ pub async fn load_wonnx_session() -> Result<Arc<Session>, WonnxError> {
   Ok(session)
 }
 
+//pub fn get_label(output: OutputTensor) -> String {
+
+//}
+
 // Hardware management
-pub async fn classify_image(session: &Session, image: &[f32])
-    -> Result<HashMap<String, OutputTensor>, WonnxError> {
+pub async fn classify_image(session: &Session, image: &[f32]) -> Result<HashMap<String, OutputTensor>, WonnxError> {
+  log::info!("Start Compute");
+
   let mut input_data = HashMap::new();
   input_data.insert("data".to_string(), image.into());
 
-  //let time_pre_compute = intant::Instant::now();
-  //log::info!("Start Compute");
-
   let result = session.run(&input_data).await?;
 
-  //let time_post_compute = Instant::now();
-  //log::info!("time: first_prediction: {:#?}", time_post_compute - time_pre_compute);
+  log::info!("End Compute");
+
+  // PRINT CLASSIFICATION //
+  let probabilities = result.clone().into_iter().next().unwrap().1;
+  let probabilities: Vec<f32> = probabilities.try_into().unwrap();
+  let mut probabilities = probabilities.iter().enumerate().collect::<Vec<_>>();
+  probabilities.sort_unstable_by(|a, b| b.1.partial_cmp(a.1).unwrap());
+
+  //let class_labels = get_imagenet_labels();
+
+  log::info!("-- Predicted classes:");
+  for i in 0..10 {
+    log::info!(
+      "Class index: {} Logit: {}",
+      probabilities[i].0,
+      probabilities[i].1 //"Infered result: {} of class: {}",
+                         //class_labels[probabilities[i].0], probabilities[i].0
+    );
+  }
 
   Ok(result)
 }
