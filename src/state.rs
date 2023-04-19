@@ -10,7 +10,7 @@ use winit::{event::*, window::Window};
 
 use crate::camera;
 use crate::model;
-use crate::nn::load_wonnx_session;
+use crate::nn::{load_wonnx_session, classify_image};
 use crate::resources;
 use crate::texture;
 
@@ -609,5 +609,27 @@ impl State {
     output.present();
 
     Ok(())
+  }
+
+  pub fn screenshot(&mut self) -> ndarray::ArrayBase<ndarray::OwnedRepr<f32>, ndarray::Dim<[usize; 4]>>  {
+    // See https://github.com/onnx/models/blob/master/vision/classification/imagenet_inference.ipynb
+    // for pre-processing image.
+    // Final size: (1, 3, 224, 224)
+    // TODO: get image screenshot
+    let image = ndarray::Array::from_shape_fn((1, 3, 224, 224), |(_, _, _, _)| {
+      // range [-1, 1]
+      0.0f32
+    });
+
+    image
+  }
+
+  pub fn classify_screenshot(&mut self) -> bool {
+      let image = self.screenshot();
+      let _future = classify_image(&self.nn_session, image.as_slice().unwrap().into());
+
+      log::info!("Classified image");
+
+      true
   }
 }
