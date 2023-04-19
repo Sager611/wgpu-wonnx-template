@@ -512,8 +512,12 @@ impl State {
         ..
       } => match key {
         VirtualKeyCode::Return => {
-          log::warn!("return pressed");
-          true
+          log::warn!("Return key event");
+
+          match state {
+            ElementState::Released => self.classify_screenshot(),
+            _ => true
+          }
         }
         _ => self.camera_controller.process_keyboard(*key, *state),
       },
