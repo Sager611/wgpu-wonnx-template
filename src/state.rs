@@ -628,7 +628,7 @@ impl State {
 
   pub fn classify_screenshot(&mut self) -> bool {
       let image = self.screenshot();
-      let _future = classify_image(&self.nn_session, image.as_slice().unwrap().into());
+      let future = classify_image(&self.nn_session, image.as_slice().unwrap().into());
 
       let _res = pollster::block_on(future);
 
