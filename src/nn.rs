@@ -1,3 +1,5 @@
+// File adapted from: https://github.com/webonnx/wonnx/blob/bb5f57fb1a8838294ca506904f9879ccdf178815/wonnx/examples/squeeze.rs
+
 use std::sync::Arc;
 use std::collections::HashMap;
 
@@ -18,9 +20,15 @@ pub async fn load_wonnx_session() -> Result<Arc<Session>, WonnxError> {
   Ok(session)
 }
 
-//pub fn get_label(output: OutputTensor) -> String {
+fn get_imagenet_labels() -> Vec<String> {
+    // Download the ImageNet class labels, matching SqueezeNet's classes.
+    let labels_path = Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join("../data/models")
+        .join("squeeze-labels.txt");
+    let file = BufReader::new(fs::File::open(labels_path).unwrap());
 
-//}
+    file.lines().map(|line| line.unwrap()).collect()
+}
 
 // Hardware management
 pub async fn classify_image(session: &Session, image: &[f32]) -> Result<HashMap<String, OutputTensor>, WonnxError> {
@@ -39,7 +47,7 @@ pub async fn classify_image(session: &Session, image: &[f32]) -> Result<HashMap<
   let mut probabilities = probabilities.iter().enumerate().collect::<Vec<_>>();
   probabilities.sort_unstable_by(|a, b| b.1.partial_cmp(a.1).unwrap());
 
-  //let class_labels = get_imagenet_labels();
+  let class_labels = get_imagenet_labels();
 
   log::info!("-- Predicted classes:");
   for i in 0..10 {

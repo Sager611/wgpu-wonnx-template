@@ -17,7 +17,7 @@ build-web target:
     rm -rf www/res && cp -rPf res/ www/res
     cd www/ && npm install
 
-run-desktop target="": (build-desktop target)
+run-desktop target="":
     @echo "Running on desktop.."
     cargo run {{target}}
 
