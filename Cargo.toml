@@ -27,6 +27,7 @@ env_logger = "0.10.0"
 getrandom = { version = "0.2.6", features = ["js"] }
 instant = "0.1.12"
 log = "0.4.17"
+ndarray = "0.15.6"
 # async library
 pollster = "0.3.0"
 tobj = { version = "3.2", features = ["async"] }

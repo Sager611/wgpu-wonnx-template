@@ -10,3 +10,5 @@ dist
 .bin/
 .bin/*
 .bin/**/*
+
+package-lock.json
