@@ -7,10 +7,12 @@
   <p>
     <a href="https://app.travis-ci.com/Sager611/wgpu-wonnx-template"><img src="https://app.travis-ci.com/Sager611/wgpu-wonnx-template.svg?branch=main" alt="Build Status" /></a>
   </p>
+  
+  <p>
+    <img src="https://i.imgur.com/oPKDaNb.gif" />
+  </p>
 
 </div>
-
-# :warning: WIP PROJECT - web is not implemented and has [issues](https://github.com/Sager611/wgpu-wonnx-template/issues) :warning:
 
 ## :memo: About
 
